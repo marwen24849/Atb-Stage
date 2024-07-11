@@ -1,0 +1,52 @@
+keycloak:
+  realm: ATB
+  domain: localhost:8081
+  adminClientId: admin-cli
+  adminClientSecret: UfPnjpKEEQAk7zLpgmf6M6LTTpji6mJG
+  client: authenticationClientId
+  urls:
+    auth: http://${keycloak.domain}
+
+server:
+  port: 9094
+  servlet:
+    context-path: /api/integration
+
+spring:
+  application:
+    name: Micro-service-User
+
+  cloud:
+    discovery:
+      enabled: true
+    eureka:
+      instance:
+        prefer-ip-address: true
+      client:
+        service-url:
+          defaultZone: ${DSCOVERY_URL:http://localhost:8761/eureka}
+
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: refresh
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: jdbc:mysql://localhost:3377/User_Service_db
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+eureka:
+  instance:
+    prefer-ip-address:true
+  client:
+    service-url:
+      defaultZone:http://localhost:8761/eureka
+
+

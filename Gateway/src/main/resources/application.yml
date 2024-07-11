@@ -1,0 +1,26 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/ATB
+          jwk-set-uri: http://localhost:8081/realms/ATB/protocol/openid-connect/certs
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowed-origins: "http://localhost:4200/"
+            allowed-headers: "*"
+            allowed-methods:
+              - GET
+              - POST
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    endpoint:
+      health:
+        show-details: always

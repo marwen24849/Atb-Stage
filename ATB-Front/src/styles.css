@@ -1,0 +1,58 @@
+.vid{
+    color: #333; 
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+body {
+   
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 0;
+  }
+  
+
+  
+.pagination {
+  display: flex;
+  justify-content: space-between; /* Répartir les éléments uniformément */
+  align-items: center; /* Centrer verticalement */
+  margin-top: 20px; /* Créer un espace visuel */
+}
+
+.pagination span {
+  margin-right: 10px; /* Espace à droite du nombre de page */
+  font-weight: bold; /* Mettre en évidence le numéro de page */
+}
+
+.pagination button {
+  background-color: #eee; /* Couleur de fond des boutons */
+  border: none; /* Supprimer les bordures */
+  padding: 8px 12px; /* Espace autour du texte */
+  font-weight: bold; /* Mettre en évidence le texte */
+  cursor: pointer; /* Indicateur de clic */
+}
+
+.pagination button:hover {
+  background-color: #ddd; /* Couleur de fond au survol */
+}
+
+.pagination button:disabled {
+  opacity: 0.5; /* Désactiver l'apparence des boutons non cliquables */
+  cursor: not-allowed; /* Modifier le curseur pour les boutons désactivés */
+}
+
+button {
+  padding: 5px 12px; /* Réduire le padding pour diminuer la taille */
+  font-size: 10px; /* Réduire la taille de la police */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+
+

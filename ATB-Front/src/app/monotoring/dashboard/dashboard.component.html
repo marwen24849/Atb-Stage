@@ -1,0 +1,220 @@
+<div class="container">
+    
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="alert alert-info dash-alert text-center">
+                <span><i class="fa fa-server"></i> System: {{ systemHealth.status }}</span>&nbsp;&nbsp;
+                <span><i class="fa fa-hdd-o"></i> Disk Space: {{ systemHealth.components.diskSpace.details.free }}</span>&nbsp;&nbsp;
+                <span *ngIf="systemCPU?.measurements[0]" [ngClass]="{'text-danger' : systemCPU.measurements[0].value < 2}">
+                    <i class="fa fa-microchip"></i> Processors: {{ systemCPU.measurements[0]?.value }}
+                  </span>&nbsp;&nbsp;
+                  <span><i class="fa fa-clock-o"></i> Up Time: {{processUptime}}</span>
+    
+                <button (click)="onRefreshData()" type="button" class="btn btn-primary btn-sm">
+                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                    Refresh
+                </button>
+            </div>
+        </div>
+    </div>
+     
+    
+
+
+
+    <div class="row">
+        
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">200 Respose</h6>
+                    <h2 class="text-right"><i
+                            class="fa fa-check-square-o f-left"></i><span>{{http200Traces.length}}</span></h2>
+                    <p class="m-b-0">Updated<span
+                            class="f-right">{{ http200Traces[0]?.timestamp | date: 'short'}}</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">404 Response</h6>
+                    <h2 class="text-right"><i
+                            class="fa fa-times-circle f-left"></i><span>{{http404Traces.length}}</span></h2>
+                    <p class="m-b-0">Updated<span
+                            class="f-right">{{ http404Traces[0]?.timestamp | date: 'short'}}</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">400 Respose</h6>
+                    <h2 class="text-right"><i
+                            class="fa fa-exclamation-circle f-left"></i><span>{{http400Traces.length}}</span></h2>
+                    <p class="m-b-0">Updated<span
+                            class="f-right">{{ http200Traces[0]?.timestamp | date: 'short'}}</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-pink order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">500 Response</h6>
+                    <h2 class="text-right"><i class="fa fa-bug f-left"></i><span>{{http500Traces.length}}</span></h2>
+                    <p class="m-b-0">Updated<span
+                            class="f-right">{{ http200Traces[0]?.timestamp | date: 'short'}}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div style="width: 300px; height: 300px;">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    </div>
+      
+      
+      
+
+    
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-12 mt-50">
+            <h5 class="pull-left">HTTP Traces</h5>
+            <button type="button" class="btn btn-primary btn-sm pull-right" style="margin-bottom: 10px;">
+                <i class="fa fa-external-link" aria-hidden="true"></i>
+                export to Excel</button>
+            <table class="table table-bordered text-center" id="httptrace-table">
+                <thead>
+                    <tr>
+                        <th>Time Stamp</th>
+                        <th>Method</th>
+                        <th>Time Taken(ms)</th>
+                        <th>Status</th>
+                        <th>URI</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let trace of getItems()">
+                       
+                      <td (click)="onSelectTrace(trace)">{{ trace.timestamp  | date: 'medium' }}</td>
+                      <td (click)="onSelectTrace(trace)">{{ trace.request.method }}</td>
+                      <td (click)="onSelectTrace(trace)">{{ trace.timeTaken }}</td>
+                      <td (click)="onSelectTrace(trace)" [ngSwitch]="trace.response.status">
+                        <span *ngSwitchCase="200" class="badge" style="background-color: #28a745; color: white;">{{ trace.response.status }}</span>
+                        <span *ngSwitchCase="404" class="badge" style="background-color: #ffc107; color: white;">{{ trace.response.status }}</span>
+                        <span *ngSwitchCase="400" class="badge" style="background-color: #17a2b8; color: white;">{{ trace.response.status }}</span>
+                        <span *ngSwitchCase="500" class="badge" style="background-color: #dc3545; color: white;">{{ trace.response.status }}</span>
+                        <span *ngSwitchDefault class="badge" style="background-color: #007bff; color: white;">{{ trace.response.status }}</span>
+
+                      </td>
+                      <td (click)="onSelectTrace(trace)">{{ trace.request.uri }}</td>
+                      <td>
+                        <button (click)="onSelectTrace(trace)" class="btn btn-outline-info"><i class="fa fa-eye"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                  
+            </table>
+            <div class="pagination justify-content-end">
+                <span>{{currentPage}} / {{totalPages}}</span>
+                <button (click)="prevPage()" [disabled]="startIndex === 0">Précédent</button>
+                <button (click)="nextPage()" [disabled]="endIndex >= tracesList.length">Suivant</button>
+              </div>
+        </div>
+    </div>
+    <!-- Button to trigger the details modal -->
+    <button hidden="true" type="button" id="trace-modal" class="btn btn-primary" data-toggle="modal"
+        data-target="#trace-info-modal"></button>
+
+</div>
+
+<!-- Trace Details Modal -->
+<div class="modal fade" id="trace-info-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">HTTP Trace Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body right-left-margin">
+                <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="pill" href="#request">
+                            <i class="fa fa-sitemap"></i> Request</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#response">
+                            <i class="fa fa-sliders"></i> Response</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="request">
+                        <p>
+                            <strong>Time Stamp:</strong>
+                            {{selectedTrace?.timestamp | date:'medium'}}
+                        </p>
+                        <p>
+                            <strong>Time Taken(ms):</strong>
+                            {{selectedTrace?.timeTaken}}
+                        </p>
+                        <p>
+                            <strong>Request Method:</strong>
+                            {{selectedTrace?.request.method}}
+                        </p>
+                        <p>
+                            <strong>Remote Address:</strong>
+                            {{selectedTrace?.request.remoteAddress}}
+                        </p>
+                        <p>
+                            <strong>URI:</strong>
+                            {{selectedTrace?.request.uri}}
+                        </p>
+                        <p>
+                            <strong>Origin:</strong>
+                            {{selectedTrace?.request.headers['origin']}}
+                        </p>
+                        <p>
+                            <strong>User Agent (Web Client):</strong>
+                            {{selectedTrace?.request.headers['user-agent']}}
+                        </p>
+                    </div>
+
+                    <div class="tab-pane fade" id="response">
+                        <dl>
+                            <dt>Status:</dt>
+                            <dd>{{selectedTrace?.response.status}}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Date:</dt>
+                            <dd>{{selectedTrace?.response.headers['Date']}}</dd>
+                        </dl>
+                        <dl>
+                            <dt>Content Type:</dt>
+                            <dd>{{selectedTrace?.response.headers['Content-Type']}}</dd>
+                        </dl>
+                        <p>
+                            <strong>Server Allowed Origins:</strong>
+                            {{selectedTrace?.response.headers['Access-Control-Allow-Origin']}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
