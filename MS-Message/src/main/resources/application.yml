@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: MS-Message
+  datasource:
+    url: jdbc:mysql://localhost:3377/ms_user
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+server:
+  port: 9090

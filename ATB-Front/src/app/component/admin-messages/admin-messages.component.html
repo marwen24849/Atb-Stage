@@ -1,0 +1,26 @@
+<!-- src/app/admin-messages/admin-messages.component.html -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Messages des Utilisateurs</h2>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Rechercher..." [(ngModel)]="searchTerm" (ngModelChange)="search()">
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Message</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let message of messages">
+          <td>{{ message.name }}</td>
+          <td>{{ message.email }}</td>
+          <td>{{ message.content }}</td>
+          <td>{{ message.date | date: 'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

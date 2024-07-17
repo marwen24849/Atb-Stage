@@ -14,6 +14,7 @@ import { authentificationGuard } from './authentification.guard';
 import { CardLoginComponent } from './component/card-login/card-login.component';
 import { CarteProfileComponent } from './component/carte-profile/carte-profile.component';
 import { SideBarComponent } from './component/side-bar/side-bar.component';
+import { AdminMessagesComponent } from './component/admin-messages/admin-messages.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'home', component: TepAppComponent },
   { path: 'Gestion-Carte', component: RechargeComponent, canActivate: [authGuard], data: { roles: ['admin'] } },
   { path: 'dashAdmin', component: AdminDashboardComponent, canActivate: [authGuard], data: { roles: ['admin'] } },
-  { path: 'profileCarte/:numero', component: CarteProfileComponent, canActivate: [authentificationGuard], data: { roles: ['user'] } },
+  { path: 'profileCarte/:numero', component: CarteProfileComponent, canActivate: [authentificationGuard] },
+  { path: 'messages', component: AdminMessagesComponent },
   { path: 'login-Carte', component: CardLoginComponent }
 ];
 

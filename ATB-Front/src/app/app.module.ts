@@ -18,6 +18,7 @@ import { RechargeComponent } from './component/recharge/recharge.component';
 import { CardLoginComponent } from './component/card-login/card-login.component';
 import { CarteProfileComponent } from './component/carte-profile/carte-profile.component';
 import { SideBarComponent } from './component/side-bar/side-bar.component';
+import { AdminMessagesComponent } from './component/admin-messages/admin-messages.component';
 
 
 function initializeKeycloak(keycloak: KeycloakService) {
@@ -50,7 +51,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     RechargeComponent,
     CardLoginComponent,
     CarteProfileComponent,
-    SideBarComponent
+    SideBarComponent,
+    AdminMessagesComponent
   ],
   imports: [
     BrowserModule,
