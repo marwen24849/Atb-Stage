@@ -1,0 +1,19 @@
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 400px;">
+      <h2 class="text-center mb-4">Login to Your Card</h2>
+      <form (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="cardNumber" class="form-label">Card Number</label>
+          <input type="text" class="form-control" id="cardNumber" [(ngModel)]="cardNumber" name="cardNumber" placeholder="Enter your card number" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

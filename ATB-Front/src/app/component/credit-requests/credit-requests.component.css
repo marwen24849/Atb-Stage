@@ -1,0 +1,156 @@
+/* Styles for the modal */
+.custom-modal .modal-header {
+  background-color: #5cb85c;
+  color: white;
+}
+
+.custom-modal .modal-content {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.custom-modal .modal-body {
+  padding: 20px;
+  font-size: 16px;
+}
+
+.custom-modal .modal-body h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.custom-modal .modal-body p {
+  margin-bottom: 10px;
+}
+
+.custom-modal .btn {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.custom-modal .btn-success {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.custom-modal .btn-danger {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+/* Additional styles for a modern look */
+.table {
+  margin-top: 20px;
+}
+
+.table thead th {
+  background-color: #f8f9fa;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.no-data {
+  text-align: center;
+  font-size: 18px;
+  color: #6c757d;
+  margin-top: 20px;
+}
+h3{
+
+  margin-top: 10px;
+  
+  text-align: center;
+  text-shadow: #4cae4c;
+  
+}
+
+
+.custom-modal1 {
+  /* Arrière-plan semi-transparent */
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  /* Fond blanc */
+  background-color: #fff;
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.modal-header, .modal-body {
+  /* Espacement interne */
+  padding: 20px;
+}
+
+.modal-title {
+  /* Style du titre */
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  /* Espacement des éléments du formulaire */
+  margin-bottom: 20px;
+}
+
+label {
+  /* Style du label */
+  font-weight: bold;
+}
+
+textarea {
+  /* Style de la zone de texte */
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-danger {
+  /* Style du bouton Rejeter */
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-secondary {
+  /* Style du bouton Fermer */
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn {
+  /* Espacement et marges des boutons */
+  margin: 5px;
+}
+
+.no-data {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+.status-badge {
+  text-transform: capitalize;
+}
+
+.status-badge.submitted {
+  color: blue;
+}
+
+.status-badge.in_review {
+  color: orange;
+}
+
+.status-badge.approved {
+  color: green;
+}
+
+.status-badge.rejected {
+  color: red;
+}

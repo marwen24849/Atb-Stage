@@ -1,0 +1,29 @@
+spring:
+  mail:
+    host: smtp.gmail.com
+    username: marwenbelakhel333@gmail.com
+    password: nasx ctwu ldln sbcx
+    port: 587
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+  application:
+    name: MS-MailSend
+
+
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
+
+server:
+  port: 5050

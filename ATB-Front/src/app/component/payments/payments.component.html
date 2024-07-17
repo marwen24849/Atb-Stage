@@ -1,0 +1,21 @@
+<!-- payments.component.html -->
+<div class="container">
+    
+    <hr>
+  
+    <div *ngIf="payments.length > 0">
+      <h3>Payment History</h3>
+      <ul>
+        <li *ngFor="let payment of payments">
+          <strong>Payment ID:</strong> {{ payment.id }} <br>
+          <strong>Credit ID:</strong> {{ payment.credit.id }} <br>
+          <strong>Amount:</strong> {{ payment.amount }} <br>
+          <strong>Date:</strong> {{ payment.paymentDate}}
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="payments.length === 0">
+      <p>No payments found.</p>
+    </div>
+  </div>
+  

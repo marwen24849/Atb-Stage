@@ -1,6 +1,14 @@
 spring:
   application:
     name: MS-Credit
+  datasource:
+    url: jdbc:mysql://localhost:3377/User_Service_db
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
 
   cloud:
     discovery:
@@ -22,4 +30,4 @@ eureka:
     prefer-ip-address:true
   client:
     service-url:
-      defaultZone:http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka

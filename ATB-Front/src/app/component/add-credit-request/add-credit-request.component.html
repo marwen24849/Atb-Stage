@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Créer une nouvelle demande de crédit</h2>
+  <form (ngSubmit)="onSubmit()" class="credit-request-form">
+      <div class="form-group">
+          <label for="requestedAmount">Montant demandé</label>
+          <input type="number" id="requestedAmount" [(ngModel)]="requestedAmount" name="requestedAmount" class="form-control">
+      </div>
+
+      <div class="form-group">
+          <label for="interestRate">Taux d'intérêt</label>
+          <input type="number" id="interestRate" [(ngModel)]="interestRate" name="interestRate" class="form-control" disabled>
+      </div>
+
+      <div class="form-group">
+          <label for="term">Durée (en mois)</label>
+          <input type="number" id="term" [(ngModel)]="term" name="term" class="form-control">
+      </div>
+
+      <div class="form-group">
+          <label for="customer_Id">ID du client</label>
+          <input type="text" id="customer_Id" [(ngModel)]="customer_Id" name="customer_Id" class="form-control" disabled> 
+      </div>
+
+      <button type="submit" class="btn btn-primary">Soumettre</button>
+  </form>
+</div>

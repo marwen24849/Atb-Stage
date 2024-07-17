@@ -32,3 +32,35 @@
     background-color: #f8f9fa !important;
   }
   
+
+
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  
+  .navbar-nav .dropdown-menu {
+    min-width: 200px;
+  }
+  
+  .navbar-nav .dropdown-item {
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .navbar-nav .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;");
+  }
+  
+
+
+  

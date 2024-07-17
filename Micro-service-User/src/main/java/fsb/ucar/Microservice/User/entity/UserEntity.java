@@ -25,7 +25,6 @@ public class UserEntity {
     private String email;
     private String firstName;
     private String lastName;
-
     private List<String> roles = new ArrayList<>();
 
 
